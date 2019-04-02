@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US" ng-app="kid">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="kid.js"></script>
+<script src="pokeController.js"></script>
+<script src="pokeService.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<body>
+
+<div ng-controller="pokeController" class="container">
+  <form>
+  <br /><label for="input1">Id póke : <input type="text" ng-model="idName" id="input1" autocomplete="off"></p>
+  <button type="submit" ng-click="search(idName)" class="btn btn-dark">Search by ID or Name!</button>
+  <button ng-click="clearAll()" class="btn btn-dark">Clear all.</button>
+  <div class="w-100 p-3">
+    <table class="table table-striped table-responsive">
+      <thead thead-dark>
+        <tr>
+          <td>Name</td>
+          <td>Front Default</td>
+          <td>Back Default</td>
+          <td>Front Shiny</td>
+          <td>Back Shiny</td>
+        </tr>
+      </thead>
+      <tr ng-repeat="poke in listaPokes">
+          <td>{{ poke.name.toUpperCase() }}</td>
+          <td><img src="{{ poke.sprites.front_default }}" /></td>
+          <td><img src="{{ poke.sprites.back_default }}" /></td>
+          <td><img src="{{ poke.sprites.front_shiny }}" /></td>
+          <td><img src="{{ poke.sprites.back_shiny }}" /></td>
+          <td><button ng-click="delete(poke)" class="btn btn-danger">X</button></td>
+      </tr>
+    </table>
+  </div>
+  </form>
+</div>
+
+</body>
+</html>
